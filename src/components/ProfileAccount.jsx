@@ -59,7 +59,7 @@ const ProfileAccount = () => {
       {/* Profile update */}
       <div className="sm:w-[80%] w-[100%] flex flex-col items-center gap-4 border-2 rounded-lg shadow-lg p-4">
         <img
-          src=""
+          src={import.meta.env.VITE_BASE_API + userDetail.image}
           alt=""
           className="rounded-full h-[150px] w-[150px] bg-white shadow-md"
         />
