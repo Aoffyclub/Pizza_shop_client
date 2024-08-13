@@ -120,7 +120,7 @@ const Nav = () => {
                       {userDetail ? (
                         <div className="flex flex-col gap-2 text-lg">
                           <img
-                            src={userDetail.image}
+                            src={import.meta.env.VITE_BASE_API + userDetail.image}
                             alt=""
                             className="h-[60px] w-[60px] rounded-full"
                           />
