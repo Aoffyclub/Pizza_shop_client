@@ -1,0 +1,75 @@
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { Button } from "./ui/button";
+import { ContextProviderContext } from "@/provider/contextProvider";
+import { useContext } from "react";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+
+const MenuCard = ({ data }) => {
+  const { token } = useContext(ContextProviderContext);
+
+  const addToCart = async (id) => {
+    if (!token) {
+      toast.error("Please login to add product to cart");
+      return;
+    }
+    try {
+      let mData = {
+        item_id: id,
+        quantity: "1",
+      };
+      await axios
+        .request({
+          url: import.meta.env.VITE_BASE_API + "/api/cart",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          data: mData,
+        })
+        .then((res) => {
+          toast.success("Product added to cart successfully");
+        });
+    } catch (error) {
+      toast.error("Failed to add product to cart");
+    }
+  };
+  return (
+    <div>
+      <div
+        key={data.id}
+        className="relative flex flex-col sm:flex-row items-center pb-4 sm:pb-0 rounded-lg shadow-md dark:bg-[#363333] dark:border-[1px] overflow-hidden"
+      >
+        <div className="h-[300px] w-full sm:w-[40%] overflow-hidden">
+          <img
+            src={data.imageUrl}
+            alt={data.name}
+            className="h-[300px] w-full hover:scale-110 hover:duration-75 "
+          />
+        </div>
+        <div className="px-6 w-full sm:w-[50%] mt-4 sm:mt-0 flex flex-col gap-2">
+          <h2 className="font-bold text-xl md:text-3xl lg:text-3xl xl:text-4xl">
+            {data.name}
+          </h2>
+          <p className="font-bold text-xl md:text-2xl lg:text-2xl xl:text-3xl">
+            {data.price} Bath
+          </p>
+          <p className="text-lg md:text-xl lg:text-xl xl:text-2xl">
+            {data.description}
+          </p>
+          <Button
+            variant="outline"
+            className="text-lg md:text-xl lg:text-xl xl:text-2xl w-[130px] rounded-full"
+            onClick={() => addToCart(data.id)}
+          >
+            Add Cart
+          </Button>
+        </div>
+        <BorderBeam />
+      </div>
+    </div>
+  );
+};
+
+export default MenuCard;

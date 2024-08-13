@@ -1,0 +1,38 @@
+import pizzaBg from "../images/pizza_bg.jpg";
+import { Button } from "@/components/ui/button";
+
+import SparklesText from "@/components/magicui/sparkles-text";
+import { Link } from "react-router-dom";
+
+const Home = () => {
+  return (
+    <div className="w-full flex flex-col gap-2">
+      <div className="relative flex flex-col h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[calc(100vh-75px)] w-full justify-center gap-10 text-[#d6c0c0]">
+        <img
+          src={pizzaBg}
+          alt="pizza image bg"
+          className="absolute w-[100%] h-[100%] -z-10"
+        />
+        <div className="flex pl-4">
+          <SparklesText
+            className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold"
+            text={"Good pizza choice are good life to eat"}
+          />
+        </div>
+
+        <p className="pl-4 w-[90%] md:w-[40%] text-sm sm:text-sm md:text-lg lg:text-lg xl:text-lg">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
+          nostrum mollitia nisi ratione autem eligendi, ex impedit nemo adipisci
+          velit est, ?
+        </p>
+        <div className="pl-4">
+          <Link to={"/menu"}>
+            <Button className="text-xl"> Order</Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
