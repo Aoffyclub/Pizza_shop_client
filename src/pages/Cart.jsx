@@ -67,7 +67,7 @@ const Cart = () => {
             Authorization: "Bearer " + token,
           },
           data: {
-            item_id: item,
+            product_id: item,
           },
         })
         .then((res) => {
@@ -111,7 +111,7 @@ const Cart = () => {
           </TableHeader>
           <TableBody>
             {cartItems?.map((data, index) => (
-              <TableRow key={data.item_id}>
+              <TableRow key={data.product_id}>
                 <TableCell className="font-medium">
                   <img
                     src={data.imageUrl}
@@ -130,7 +130,7 @@ const Cart = () => {
                   <Button
                     variant="outline"
                     onClick={() => {
-                      removeItem(data.item_id);
+                      removeItem(data.product_id);
                     }}
                   >
                     Delete

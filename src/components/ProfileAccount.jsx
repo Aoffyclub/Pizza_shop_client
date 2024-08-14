@@ -1,7 +1,8 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-
+import camerIcons from "../images/icons/camera.png";
+import userIcons from "../images/icons/user.png";
 
 import { useContext, useState } from "react";
 import toast from "react-hot-toast";
@@ -12,7 +13,7 @@ const ProfileAccount = () => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
-    image: "kkkk",
+    image: "",
     email: "",
     birth: "",
   });
@@ -53,16 +54,68 @@ const ProfileAccount = () => {
     }
   };
 
+  const uploadImg = () => {
+    const input = document.getElementById("upload_file");
+    input.click(); // Trigger the file input's click event
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("profileImage", file);
+
+    console.log(formData);
+
+    try {
+      await axios
+        .request({
+          method: "POST",
+          url: import.meta.env.VITE_BASE_API + "/api/upload",
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + token,
+          },
+          data: formData,
+        })
+        .then((res) => {
+          toast.success("Image uploaded successfully");
+          getUserDetail();
+        });
+    } catch (error) {
+      toast.error("Can't upload image");
+    }
+  };
 
   return (
     <div className="flex flex-col gap-3 sm:px-10 px-4 sm:mt-10 mt-4">
       {/* Profile update */}
       <div className="sm:w-[80%] w-[100%] flex flex-col items-center gap-4 border-2 rounded-lg shadow-lg p-4">
-        <img
-          src={import.meta.env.VITE_BASE_API + userDetail.image}
-          alt=""
-          className="rounded-full h-[150px] w-[150px] bg-white shadow-md"
-        />
+        <div className="relative  rounded-full h-[150px] w-[150px]">
+          <img
+            src={
+              userDetail.image != ""
+                ? import.meta.env.VITE_BASE_API + userDetail.image
+                : userIcons
+            }
+            alt=""
+            className="rounded-full h-[150px] w-[150px] bg-white shadow-md"
+          />
+          <div
+            onClick={uploadImg}
+            className="flex items-center justify-center  rounded-full h-[30px] w-[30px] absolute bottom-0 right-0 bg-white dark:bg-slate-500 shadow-sm border-2"
+          >
+            <img src={camerIcons} alt="" className=" h-[20px] w-[20px] " />
+            <input
+              type="file"
+              className="hidden"
+              id="upload_file"
+              onChange={handleFileChange}
+            />
+          </div>
+        </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <div className="flex gap-2 items-center ">

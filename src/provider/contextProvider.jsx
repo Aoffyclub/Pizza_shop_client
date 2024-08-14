@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
     if (newToken == null) {
       localStorage.removeItem("token");
       setToken(null);
+      setUserDetail([]);
       return;
     } else {
       localStorage.setItem("token", newToken);
@@ -39,7 +40,7 @@ const ContextProvider = ({ children }) => {
 
   return (
     <ContextProviderContext.Provider
-      value={{ token, localToken, userDetail, getUserDetail }}
+      value={{ token, localToken, userDetail, getUserDetail, }}
     >
       {children}
     </ContextProviderContext.Provider>

@@ -17,6 +17,7 @@ import Toggle from "./Toggle";
 import { Link, useNavigate } from "react-router-dom";
 import { ContextProviderContext } from "@/provider/contextProvider";
 import pizza from "../images/pizza.png";
+import userIcons from "../images/icons/user.png";
 
 const Nav = () => {
   const { localToken, token, userDetail } = useContext(ContextProviderContext);
@@ -58,8 +59,8 @@ const Nav = () => {
           toast.success(res.data.message);
           if (loginCreate == "login") {
             localToken(res.data.token);
-          }else {
-            setLoginCreate("login")
+          } else {
+            setLoginCreate("login");
           }
         });
     } catch (error) {
@@ -120,7 +121,12 @@ const Nav = () => {
                       {userDetail ? (
                         <div className="flex flex-col gap-2 text-lg">
                           <img
-                            src={import.meta.env.VITE_BASE_API + userDetail.image}
+                            src={
+                              userDetail.image != ""
+                                ? import.meta.env.VITE_BASE_API +
+                                  userDetail.image
+                                : userIcons
+                            }
                             alt=""
                             className="h-[60px] w-[60px] rounded-full"
                           />
@@ -153,7 +159,12 @@ const Nav = () => {
                   <SheetClose asChild>
                     <div className="flex gap-2">
                       <Link to="/profile/account">
-                        <Button variant="outline" onClick={(prev)=> setOpen(!prev)}>Edit profile</Button>
+                        <Button
+                          variant="outline"
+                          onClick={(prev) => setOpen(!prev)}
+                        >
+                          Edit profile
+                        </Button>
                       </Link>
                       <div>
                         <Button onClick={logOut} variant="outline">

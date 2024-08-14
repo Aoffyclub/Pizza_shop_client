@@ -15,7 +15,7 @@ const MenuCard = ({ data }) => {
     }
     try {
       let mData = {
-        item_id: id,
+        product_id: id,
         quantity: "1",
       };
       await axios
@@ -61,7 +61,7 @@ const MenuCard = ({ data }) => {
           <Button
             variant="outline"
             className="text-lg md:text-xl lg:text-xl xl:text-2xl w-[130px] rounded-full"
-            onClick={() => addToCart(data.id)}
+            onClick={() => addToCart(data.product_id)}
           >
             Add Cart
           </Button>
