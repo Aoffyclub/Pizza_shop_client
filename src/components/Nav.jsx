@@ -128,7 +128,7 @@ const Nav = () => {
                                 : userIcons
                             }
                             alt=""
-                            className="h-[60px] w-[60px] rounded-full"
+                            className="h-[70px] w-[70px] rounded-full shadow-md border-2"
                           />
                           <div>
                             <p>Username : {userDetail.username}</p>
