@@ -1,7 +1,8 @@
-import { StrictMode } from "react";
+// index.js
+import React from "react";
 import { createRoot } from "react-dom/client";
 
-import Layout from "./Layout.jsx"; // Import the new Layout component
+import Layout from "./Layout.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./provider/themeProvider.jsx";
@@ -16,10 +17,10 @@ import Address from "./components/Address.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Use Layout as the root element
+    element: <Layout />,
     children: [
       {
-        index: true, // Matches the '/' path
+        index: true,
         element: <Home />,
       },
       {
@@ -45,13 +46,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-// Render the application to the DOM
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <ContextProvider>
-        <RouterProvider router={router} />
-      </ContextProvider>
-    </ThemeProvider>
-  </StrictMode>
+  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
+  </ThemeProvider>
 );

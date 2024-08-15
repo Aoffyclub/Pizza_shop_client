@@ -8,9 +8,6 @@ import MenuCard from "@/components/MenuCard";
 const Menu = () => {
   const [dataProduct, setDataProduct] = useState([]);
 
-  useEffect(() => {
-    getMenu();
-  }, []);
 
   const getMenu = async () => {
     try {
@@ -23,6 +20,10 @@ const Menu = () => {
       console.error(err);
     }
   };
+
+   useEffect(() => {
+     getMenu();
+   }, []);
 
   return (
     <div className="flex flex-col gap-3 sm:px-10 px-4 sm:mt-10 mt-4 items-center sm:items-start">

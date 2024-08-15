@@ -41,11 +41,11 @@ const MenuCard = ({ data }) => {
         key={data.id}
         className="relative flex flex-col sm:flex-row items-center pb-4 sm:pb-0 rounded-lg shadow-md dark:bg-[#363333] dark:border-[1px] overflow-hidden"
       >
-        <div className="h-[300px] w-full sm:w-[40%] overflow-hidden">
+        <div className="md:h-[350px] h-[200px] w-full sm:w-[40%] overflow-hidden">
           <img
             src={data.imageUrl}
             alt={data.name}
-            className="h-[300px] w-full hover:scale-110 hover:duration-75 "
+            className="md:h-[350px] h-[200px] w-full hover:scale-110 hover:duration-75 "
           />
         </div>
         <div className="px-6 w-full sm:w-[50%] mt-4 sm:mt-0 flex flex-col gap-2">
