@@ -24,7 +24,10 @@ const ContextProvider = ({ children }) => {
     try {
       await axios
         .get(import.meta.env.VITE_BASE_API + "/api/userInfo", {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: "Bearer " + token,
+          },
         })
         .then((res) => {
           setUserDetail(res.data.data);
@@ -35,12 +38,12 @@ const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUserDetail()
+    getUserDetail();
   }, [token]);
 
   return (
     <ContextProviderContext.Provider
-      value={{ token, localToken, userDetail, getUserDetail, }}
+      value={{ token, localToken, userDetail, getUserDetail }}
     >
       {children}
     </ContextProviderContext.Provider>
