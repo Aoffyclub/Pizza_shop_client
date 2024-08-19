@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 // Create a Context
 const ContextProviderContext = createContext();

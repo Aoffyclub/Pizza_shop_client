@@ -114,7 +114,7 @@ const Cart = () => {
               <TableRow key={data.product_id}>
                 <TableCell className="font-medium">
                   <img
-                    src={data.imageUrl}
+                    src={import.meta.env.VITE_BASE_API + data.imageUrl}
                     loading="lazy"
                     alt=""
                     className="md:h-[150px] md:w-[150px] h-[50px] w-[50px] rounded-xl"

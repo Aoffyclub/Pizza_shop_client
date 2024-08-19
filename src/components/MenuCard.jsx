@@ -43,7 +43,7 @@ const MenuCard = ({ data }) => {
       >
         <div className="md:h-[350px] h-[200px] w-full sm:w-[40%] overflow-hidden">
           <img
-            src={data.imageUrl}
+            src={import.meta.env.VITE_BASE_API + data.imageUrl}
             alt={data.name}
             className="md:h-[350px] h-[200px] w-full hover:scale-110 hover:duration-75 "
           />
