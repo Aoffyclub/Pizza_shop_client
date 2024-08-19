@@ -47,7 +47,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+  <ThemeProvider defaultTheme="dark" storageKey="theme">
     <ContextProvider>
       <RouterProvider router={router} />
     </ContextProvider>

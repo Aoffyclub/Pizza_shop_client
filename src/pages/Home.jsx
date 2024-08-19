@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="w-full flex flex-col gap-2">
-      <div className="relative flex flex-col h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[calc(100vh-75px)] w-full justify-center gap-10 text-[#d6c0c0]">
+      <div className="relative flex flex-col h-[calc(100vh-75px)] w-full justify-center gap-10 text-[#d6c0c0]">
         <img
           src={pizzaBg}
           alt="pizza image bg"
