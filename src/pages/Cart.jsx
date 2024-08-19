@@ -9,16 +9,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { ContextProviderContext } from "@/provider/contextProvider";
 import { useState, useContext, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import CartConfirm from "@/components/CartConfirm";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const { token } = useContext(ContextProviderContext);
+  const [openConfirm, setOpenConfirm] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -56,7 +59,6 @@ const Cart = () => {
   };
 
   const removeItem = async (item) => {
-
     try {
       await axios
         .request({
@@ -81,6 +83,10 @@ const Cart = () => {
         toast.error(error.response.data.error[0]);
       }
     }
+  };
+
+  const openPopup = () => {
+    setOpenConfirm(true);
   };
 
   return (
@@ -148,6 +154,25 @@ const Cart = () => {
             </TableRow>
           </TableFooter>
         </Table>
+      )}
+
+      <div className="flex justify-end w-[100%] my-10">
+        <Button
+          variant="outline"
+          className="cursor-pointer md:text-lg text-base font-bold "
+          onClick={() => setOpenConfirm((prev) => !prev)}
+        >
+          Submit Order
+        </Button>
+      </div>
+      {!openConfirm ? (
+        ""
+      ) : (
+        <CartConfirm
+          data={cartItems}
+          totalPrice={totalPrice}
+          setOpen={setOpenConfirm}
+        />
       )}
     </div>
   );
