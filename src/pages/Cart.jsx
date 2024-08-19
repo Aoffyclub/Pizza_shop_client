@@ -103,68 +103,79 @@ const Cart = () => {
           No item
         </div>
       ) : (
-        <Table>
-          <TableCaption>A list of your order price to pay.</TableCaption>
-          <TableHeader>
-            <TableRow className="font-bold text-lg">
-              <TableHead className="sm:w-[200px]">Image</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead className="sm:w-[100px] text-right">Quatity</TableHead>
-              <TableHead className="sm:w-[100px] text-right">Price</TableHead>
-              <TableHead className="sm:w-[100px] text-right">Amount</TableHead>
-              <TableHead className="sm:w-[100px] text-right">Remove</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {cartItems?.map((data, index) => (
-              <TableRow key={data.product_id}>
-                <TableCell className="font-medium">
-                  <img
-                    src={import.meta.env.VITE_BASE_API + data.imageUrl}
-                    loading="lazy"
-                    alt=""
-                    className="md:h-[150px] md:w-[150px] h-[50px] w-[50px] rounded-xl"
-                  />
-                </TableCell>
-                <TableCell className="font-semibold text-xl">
-                  {data.name}
-                </TableCell>
-                <TableCell className="text-right">{data.quantity}</TableCell>
-                <TableCell className="text-right">{data.price}</TableCell>
-                <TableCell className="text-right">{data.totalPrice}</TableCell>
+        <div className="flex flex-col w-[100%]">
+          <Table>
+            <TableCaption>A list of your order price to pay.</TableCaption>
+            <TableHeader>
+              <TableRow className="font-bold text-lg">
+                <TableHead className="sm:w-[200px]">Image</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead className="sm:w-[100px] text-right">
+                  Quatity
+                </TableHead>
+                <TableHead className="sm:w-[100px] text-right">Price</TableHead>
+                <TableHead className="sm:w-[100px] text-right">
+                  Amount
+                </TableHead>
+                <TableHead className="sm:w-[100px] text-right">
+                  Remove
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {cartItems?.map((data, index) => (
+                <TableRow key={data.product_id}>
+                  <TableCell className="font-medium">
+                    <img
+                      src={import.meta.env.VITE_BASE_API + data.imageUrl}
+                      loading="lazy"
+                      alt=""
+                      className="md:h-[150px] md:w-[150px] h-[50px] w-[50px] rounded-xl"
+                    />
+                  </TableCell>
+                  <TableCell className="font-semibold text-xl">
+                    {data.name}
+                  </TableCell>
+                  <TableCell className="text-right">{data.quantity}</TableCell>
+                  <TableCell className="text-right">{data.price}</TableCell>
+                  <TableCell className="text-right">
+                    {data.totalPrice}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        removeItem(data.product_id);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={5}>Total</TableCell>
                 <TableCell className="text-right">
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      removeItem(data.product_id);
-                    }}
-                  >
-                    Delete
-                  </Button>
+                  {parseFloat(totalPrice)} Bath
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={5}>Total</TableCell>
-              <TableCell className="text-right">
-                {parseFloat(totalPrice)} Bath
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
+            </TableFooter>
+          </Table>
+
+          <div className="flex justify-end w-[100%] my-10">
+            <Button
+              variant="outline"
+              className="cursor-pointer md:text-lg text-base font-bold "
+              onClick={() => setOpenConfirm((prev) => !prev)}
+            >
+              Submit Order
+            </Button>
+          </div>
+        </div>
       )}
 
-      <div className="flex justify-end w-[100%] my-10">
-        <Button
-          variant="outline"
-          className="cursor-pointer md:text-lg text-base font-bold "
-          onClick={() => setOpenConfirm((prev) => !prev)}
-        >
-          Submit Order
-        </Button>
-      </div>
       {!openConfirm ? (
         ""
       ) : (
