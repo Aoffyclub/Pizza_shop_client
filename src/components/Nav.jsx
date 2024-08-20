@@ -89,7 +89,7 @@ const Nav = () => {
       </div>
       <div className="flex gap-8 items-center">
         <div>
-          <ul className="flex items-center gap-4 md:text-lg text-base font-bold">
+          <ul className="flex items-center sm:gap-4 gap-2 md:text-lg text-base font-bold">
             <Link to={"/"}>
               <li className="cursor-pointer">Home</li>
             </Link>
@@ -98,6 +98,9 @@ const Nav = () => {
             </Link>
             <Link to={"/cart"}>
               <li className="cursor-pointer">Cart</li>
+            </Link>
+            <Link to={"/order"}>
+              <li className="cursor-pointer">Order</li>
             </Link>
           </ul>
         </div>

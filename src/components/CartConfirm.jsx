@@ -22,10 +22,12 @@ import { useEffect, useState, useContext } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { ContextProviderContext } from "@/provider/contextProvider";
+import { useNavigate } from "react-router-dom";
 
 const CartConfirm = ({ data, totalPrice, address, setOpen }) => {
   const [cartItems, setCartItems] = useState(data);
   const { token } = useContext(ContextProviderContext);
+  const navigate = useNavigate();
 
   const SubmitOrder = async () => {
     console.log("click Submit");
@@ -53,8 +55,6 @@ const CartConfirm = ({ data, totalPrice, address, setOpen }) => {
         })),
       };
 
-      console.log(orderData);
-
       await axios
         .request({
           url: import.meta.env.VITE_BASE_API + "/api/order",
@@ -68,6 +68,7 @@ const CartConfirm = ({ data, totalPrice, address, setOpen }) => {
         .then((res) => {
           toast.success("Order placed successfully!");
           setCartItems([]);
+          navigate("/order")
         });
     } catch (error) {
       toast.error("Failed to place order");

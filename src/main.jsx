@@ -11,6 +11,7 @@ import Profile from "./pages/Profile.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/Cart.jsx";
 import Menu from "./pages/Menu.jsx";
+import Order from "./pages/Order.jsx";
 import ProfileAccount from "./components/ProfileAccount.jsx";
 import Address from "./components/Address.jsx";
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
         element: <About />,
       },
       { path: "/menu", element: <Menu /> },
+      { path: "/order", element: <Order /> },
     ],
   },
 ]);
