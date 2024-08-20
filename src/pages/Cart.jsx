@@ -9,6 +9,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -22,10 +31,13 @@ const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const { token } = useContext(ContextProviderContext);
   const [openConfirm, setOpenConfirm] = useState(false);
+  const [address, setAddress] = useState([]);
+  const [choiceAddress, setChoiceAddress] = useState([]);
 
   useEffect(() => {
     if (token) {
       getCartItems();
+      getAddress();
     }
   }, [token]);
 
@@ -47,7 +59,6 @@ const Cart = () => {
             price += item.totalPrice;
           });
           setTotalPrice(price);
-          console.log(res.data.data);
         });
     } catch (error) {
       if (error.response.status == 404 || error.response.status == 400) {
@@ -85,8 +96,31 @@ const Cart = () => {
     }
   };
 
-  const openPopup = () => {
-    setOpenConfirm(true);
+  const getAddress = async () => {
+    try {
+      await axios
+        .get(import.meta.env.VITE_BASE_API + "/api/address", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        })
+        .then((res) => {
+          console.log(res.data.data[0]);
+          setAddress(res.data.data);
+          // setChoiceAddress(res.data.data[0]);
+        });
+    } catch (error) {
+      toast.error("Failed to get address");
+    }
+  };
+
+  const selectAddress = (value) => {
+    if (!address) {
+      return;
+    }
+    var select = address.filter((data) => data.id == value);
+    setChoiceAddress(select);
   };
 
   return (
@@ -164,6 +198,39 @@ const Cart = () => {
             </TableFooter>
           </Table>
 
+          <div className="flex gap-10 mt-10 md:flex-row flex-col ">
+            <div className="flex flex-col gap-2 md:text-lg text-base font-bold w-[20%] ">
+              <p>Address</p>
+              <Select onValueChange={selectAddress} >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select your address" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {address.map((address) => (
+                      <SelectItem value={address.id}>
+                        Address {address.id}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {choiceAddress?.map((address) => (
+              <div className="flex flex-col gap-1 py-4 px-10 border-2 rounded-xl w-[100%] md:w-[80%]">
+                <p>📌</p>
+                <p>{address.address}</p>
+                <div className="flex gap-2">
+                  <p>{address.city}</p>
+                  <p>{address.province}</p>
+                  <p>{address.zipCode}</p>
+                </div>
+                <p>Phone number : {address.phoneNumber}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="flex justify-end w-[100%] my-10">
             <Button
               variant="outline"
@@ -182,6 +249,7 @@ const Cart = () => {
         <CartConfirm
           data={cartItems}
           totalPrice={totalPrice}
+          address={choiceAddress}
           setOpen={setOpenConfirm}
         />
       )}
