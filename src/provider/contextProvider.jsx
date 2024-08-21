@@ -38,7 +38,9 @@ const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUserDetail();
+    if (token) {
+      getUserDetail();
+    }
   }, [token]);
 
   return (

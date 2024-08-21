@@ -39,16 +39,16 @@ const MenuCard = ({ data }) => {
     <div>
       <div
         key={data.id}
-        className="relative flex flex-col sm:flex-row items-center pb-4 sm:pb-0 rounded-lg shadow-md dark:bg-[#363333] dark:border-[1px] overflow-hidden"
+        className="relative flex flex-col items-center pb-4 rounded-lg shadow-md dark:bg-[#363333] dark:border-[1px] overflow-hidden"
       >
-        <div className="md:h-[350px] h-[200px] w-full sm:w-[40%] overflow-hidden">
+        <div className="md:h-[350px] h-[200px] w-full  overflow-hidden">
           <img
             src={import.meta.env.VITE_BASE_API + data.imageUrl}
             alt={data.name}
             className="md:h-[350px] h-[200px] w-full hover:scale-110 hover:duration-75 "
           />
         </div>
-        <div className="px-6 w-full sm:w-[50%] mt-4 sm:mt-0 flex flex-col gap-2">
+        <div className="px-6 w-full mt-4 flex flex-col gap-2">
           <h2 className="font-bold text-xl md:text-3xl lg:text-3xl xl:text-4xl">
             {data.name}
           </h2>
@@ -60,7 +60,7 @@ const MenuCard = ({ data }) => {
           </p>
           <Button
             variant="outline"
-            className="text-lg md:text-xl lg:text-xl xl:text-2xl w-[130px] rounded-full"
+            className="text-lg md:text-xl lg:text-xl xl:text-2xl w-[130px] rounded-full mt-2"
             onClick={() => addToCart(data.product_id)}
           >
             Add Cart

@@ -87,7 +87,7 @@ const Nav = () => {
           <img src={pizza} alt="" className="h-[60px] w-[120px]" />
         </Link>
       </div>
-      <div className="flex gap-8 items-center">
+      <div className="flex sm:gap-8 gap-3 items-center">
         <div>
           <ul className="flex items-center sm:gap-4 gap-2 md:text-lg text-base font-bold">
             <Link to={"/"}>

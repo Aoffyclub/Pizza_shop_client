@@ -132,6 +132,8 @@ const Cart = () => {
         />
       </div>
 
+
+
       {cartItems.length == 0 ? (
         <div className="flex items-center w-full justify-center text-xl mt-2">
           No item

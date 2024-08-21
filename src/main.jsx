@@ -9,11 +9,12 @@ import { ThemeProvider } from "./provider/themeProvider.jsx";
 import { ContextProvider } from "./provider/contextProvider.jsx";
 import Profile from "./pages/Profile.jsx";
 import Home from "./pages/Home.jsx";
-import About from "./pages/Cart.jsx";
+import Cart from "./pages/Cart.jsx";
 import Menu from "./pages/Menu.jsx";
 import Order from "./pages/Order.jsx";
 import ProfileAccount from "./components/ProfileAccount.jsx";
 import Address from "./components/Address.jsx";
+import OrderDetail from "./pages/OrderDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,25 +26,35 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/profile",
+        path: "profile", // Removed leading slash
         element: <Profile />,
         children: [
           {
-            path: "/profile/account",
+            path: "account", // Relative path, no leading slash
             element: <ProfileAccount />,
           },
           {
-            path: "/profile/address",
+            path: "address", // Relative path, no leading slash
             element: <Address />,
           },
         ],
       },
       {
-        path: "/cart",
-        element: <About />,
+        path: "cart",
+        element: <Cart />,
       },
-      { path: "/menu", element: <Menu /> },
-      { path: "/order", element: <Order /> },
+      {
+        path: "menu",
+        element: <Menu />,
+      },
+      {
+        path: "order",
+        element: <Order />,
+      },
+      {
+        path: "order/:orderId",
+        element: <OrderDetail />,
+      },
     ],
   },
 ]);

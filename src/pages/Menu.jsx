@@ -34,7 +34,7 @@ const Menu = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 px-4 md:px-28 lg:px-32 xl:px-44 mt-5">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-6 px-4 mt-5">
         {dataProduct?.map((data) => (
           <MenuCard data={data} />
         ))}
