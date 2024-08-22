@@ -209,9 +209,9 @@ const Cart = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    {address.map((address) => (
+                    {address.map((address, index) => (
                       <SelectItem value={address.id}>
-                        Address {address.id}
+                        Address {index + 1}
                       </SelectItem>
                     ))}
                   </SelectGroup>

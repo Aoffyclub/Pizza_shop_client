@@ -1,4 +1,3 @@
-// index.js
 import React from "react";
 import { createRoot } from "react-dom/client";
 
@@ -16,53 +15,56 @@ import ProfileAccount from "./components/ProfileAccount.jsx";
 import Address from "./components/Address.jsx";
 import OrderDetail from "./pages/OrderDetail.jsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "profile", // Removed leading slash
-        element: <Profile />,
-        children: [
-          {
-            path: "account", // Relative path, no leading slash
-            element: <ProfileAccount />,
-          },
-          {
-            path: "address", // Relative path, no leading slash
-            element: <Address />,
-          },
-        ],
-      },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path: "menu",
-        element: <Menu />,
-      },
-      {
-        path: "order",
-        element: <Order />,
-      },
-      {
-        path: "order/:orderId",
-        element: <OrderDetail />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "profile", // Removed leading slash
+          element: <Profile />,
+          children: [
+            {
+              path: "account", // Relative path, no leading slash
+              element: <ProfileAccount />,
+            },
+            {
+              path: "address", // Relative path, no leading slash
+              element: <Address />,
+            },
+          ],
+        },
+        {
+          path: "cart",
+          element: <Cart />,
+        },
+        {
+          path: "menu",
+          element: <Menu />,
+        },
+        {
+          path: "order",
+          element: <Order />,
+        },
+        {
+          path: "order/:orderId",
+          element: <OrderDetail />,
+        },
+      ],
+    },
+  ],
+  { basename: import.meta.env.VITE_BASE_URL }
+);
 
 createRoot(document.getElementById("root")).render(
   <ThemeProvider defaultTheme="dark" storageKey="theme">
     <ContextProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}/>
     </ContextProvider>
   </ThemeProvider>
 );
