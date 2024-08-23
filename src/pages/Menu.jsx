@@ -77,7 +77,7 @@ const Menu = () => {
         </Select>
       </div>
 
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-6 px-4 mt-5">
+      <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 gap-6 px-4 mt-5">
         {prductCategory?.map((data) => (
           <MenuCard data={data} />
         ))}
