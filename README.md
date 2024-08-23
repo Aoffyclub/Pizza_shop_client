@@ -18,6 +18,8 @@ This is the frontend client for the Pizza Shop web application, built with Vite 
 - ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white) : For making API requests.
 - ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) : For routing within the application.
 - ![Context API](https://img.shields.io/badge/Context_API-007ACC?style=for-the-badge&logo=react&logoColor=white) : For managing global state.
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white) Utility-first CSS framework for styling.
+- ![ShanCN](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white) : Utility-first CSS Component for styling.
 
 ## ⚙️ Installation and Setup
 
