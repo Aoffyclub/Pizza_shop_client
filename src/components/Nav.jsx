@@ -81,7 +81,7 @@ const Nav = () => {
     }, 700);
   };
   return (
-    <div className="flex items-center justify-between w-full h-[75px] px-5 shadow-lg border-t-2 bg-white dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
+    <div className="flex items-center justify-between w-full h-[75px] px-5 shadow-lg border-t-2 bg-opacity-60  backdrop-blur-sm  bg-white  dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
       <div className="sm:flex hidden">
         <Link to={"/"}>
           <img src={pizza} alt="" className="h-[60px] w-[120px]" />
