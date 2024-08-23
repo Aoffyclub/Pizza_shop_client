@@ -82,7 +82,7 @@ const Nav = () => {
     }, 700);
   };
   return (
-    <div className="flex items-center justify-between w-full h-[75px] md:px-5 px-1 shadow-lg border-t-2 bg-opacity-60  backdrop-blur-sm  bg-white  dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
+    <div className="flex items-center justify-between w-full md:h-[75px] h-[65px] md:px-5 px-1 shadow-lg border-t-2 bg-opacity-60  backdrop-blur-sm  bg-white  dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
       {/* desk top */}
       <div className="sm:flex hidden">
         <Link to={"/"}>
