@@ -17,6 +17,7 @@ import Toggle from "./Toggle";
 import { Link, useNavigate } from "react-router-dom";
 import { ContextProviderContext } from "@/provider/contextProvider";
 import pizza from "../images/pizza.png";
+import pizzalogo from "../images/pizza_logo.png";
 import userIcons from "../images/icons/user.png";
 
 const Nav = () => {
@@ -81,14 +82,21 @@ const Nav = () => {
     }, 700);
   };
   return (
-    <div className="flex items-center justify-between w-full h-[75px] px-5 shadow-lg border-t-2 bg-opacity-60  backdrop-blur-sm  bg-white  dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
+    <div className="flex items-center justify-between w-full h-[75px] md:px-5 px-1 shadow-lg border-t-2 bg-opacity-60  backdrop-blur-sm  bg-white  dark:bg-[#020817] dark:border-b-[1px] sticky top-0 overflow-hidden z-10">
+      {/* desk top */}
       <div className="sm:flex hidden">
         <Link to={"/"}>
           <img src={pizza} alt="" className="h-[60px] w-[120px]" />
         </Link>
       </div>
-      <div className="flex sm:gap-8 gap-3 items-center">
-        <div>
+      <div className="flex sm:gap-8 gap-0 items-center justify-between w-full sm:w-auto">
+        <div className=" flex flex-row items-center gap-2">
+          <div className="sm:hidden h-[45px] w-[45px]">
+            <Link to={"/"}>
+              <img src={pizzalogo} alt="" className="w-[100%] h-[100%] " />
+            </Link>
+          </div>
+
           <ul className="flex items-center sm:gap-4 gap-2 md:text-lg text-base font-bold">
             <Link to={"/"}>
               <li className="cursor-pointer">Home</li>
