@@ -110,7 +110,7 @@ const Cart = () => {
           // setChoiceAddress(res.data.data[0]);
         });
     } catch (error) {
-      toast.error("Failed to get address");
+      toast.error("Failed to get address" , error);
     }
   };
 
@@ -158,7 +158,7 @@ const Cart = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {cartItems?.map((data, index) => (
+              {cartItems?.map((data) => (
                 <TableRow key={data.product_id}>
                   <TableCell className="font-medium">
                     <img
@@ -209,7 +209,7 @@ const Cart = () => {
                 <SelectContent>
                   <SelectGroup>
                     {address.map((address, index) => (
-                      <SelectItem value={address.id}>
+                      <SelectItem key={index} value={address.id}>
                         Address {index + 1}
                       </SelectItem>
                     ))}
@@ -218,8 +218,8 @@ const Cart = () => {
               </Select>
             </div>
 
-            {choiceAddress?.map((address) => (
-              <div className="flex flex-col gap-1 py-4 px-10 border-2 rounded-xl w-[100%] md:w-[80%]">
+            {choiceAddress?.map((address, index) => (
+              <div key={index} className="flex flex-col gap-1 py-4 px-10 border-2 rounded-xl w-[100%] md:w-[80%]">
                 <p>📌</p>
                 <p>{address.address}</p>
                 <div className="flex gap-2">

@@ -26,7 +26,7 @@ const Home = () => {
    }, []);
   return (
     <div className="w-full flex flex-col gap-2">
-      <div className="relative flex flex-col h-[calc(100vh-75px)] w-full justify-center gap-10 text-[#b8adad]">
+      <div className="relative flex flex-col h-[calc(100vh-65px)] w-full justify-center gap-10 text-[#b8adad]">
         <img
           src={bgImage}
           alt="pizza image bg"

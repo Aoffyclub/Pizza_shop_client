@@ -21,7 +21,7 @@ const Menu = () => {
 
   const getMenu = async () => {
     try {
-      const res = await axios
+      await axios
         .get(import.meta.env.VITE_BASE_API + "/api/product")
         .then((res) => {
           const uniqueCategories = res.data.data.reduce((acc, item) => {
@@ -68,7 +68,7 @@ const Menu = () => {
             <SelectGroup>
               <SelectLabel>Category</SelectLabel>
               {category?.map((data, index) => (
-                <SelectItem value={data}>
+                <SelectItem key={index} value={data}>
                   {data.charAt(0).toUpperCase() + data.slice(1)}
                 </SelectItem>
               ))}
@@ -78,8 +78,8 @@ const Menu = () => {
       </div>
 
       <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 gap-6 px-4 mt-5">
-        {prductCategory?.map((data) => (
-          <MenuCard data={data} />
+        {prductCategory?.map((data, index) => (
+          <MenuCard key={index} data={data} />
         ))}
       </div>
     </div>

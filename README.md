@@ -1,7 +1,7 @@
 
 # 🍕 Pizza Shop
 
-This is the frontend client for the Pizza Shop web application, built with Vite and React. It provides an intuitive user interface for browsing the menu, placing orders, and managing user accounts. Demo : http://45.154.26.220/pizza/
+This is the frontend client for the Pizza Shop web application, built with Vite and React. It provides an intuitive user interface for browsing the menu, placing orders, and managing user accounts. Demo : https://aoffydev.online/pizza/
 
 ## 🛠️ Features
 
